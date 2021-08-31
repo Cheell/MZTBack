@@ -15,11 +15,11 @@ namespace WebApplication.Controllers
         private static readonly string SECRET_TOKEN = "4723c269-57aa-4a4f-9439-439b695de6d1";
         private static readonly string VERIFICATION_FAIL = "Token Verification Fail!";
         [HttpGet]
-        public async Task<IActionResult> GetEmployee2018Data() => Checktoken(Request) ? Ok(await YearManager.GetEmpData()) : StatusCode(401, VERIFICATION_FAIL);
+        public async Task<IActionResult> GetEmployee2018Data() => Checktoken(Request) ? Ok(new EmployeeResponce(await YearManager.GetEmpData(), 2018)) : StatusCode(401, VERIFICATION_FAIL);
         [HttpGet]
-        public async Task<IActionResult> GetEmployee2019Data() => Checktoken(Request) ? Ok(await YearManager.GetEmpData()) : StatusCode(401, VERIFICATION_FAIL);
+        public async Task<IActionResult> GetEmployee2019Data() => Checktoken(Request) ? Ok(new EmployeeResponce(await YearManager.GetEmpData(), 2019)) : StatusCode(401, VERIFICATION_FAIL);
         [HttpGet]
-        public async Task<IActionResult> GetEmployee2020Data() => Checktoken(Request) ? Ok(await YearManager.GetEmpData()) : StatusCode(401, VERIFICATION_FAIL);
+        public async Task<IActionResult> GetEmployee2020Data() => Checktoken(Request) ? Ok(new EmployeeResponce(await YearManager.GetEmpData(), 2020)) : StatusCode(401, VERIFICATION_FAIL);
 
         private bool Checktoken(HttpRequest request)
         {
